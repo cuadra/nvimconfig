@@ -14,6 +14,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 local plugins = {
+{
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig'
+},
 { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 {
   'nvim-telescope/telescope.nvim', tag = '0.1.8',
@@ -25,9 +30,15 @@ local plugins = {
 }
 }
 local opts = {}
-
-require("lazy").setup(plugins,opts)
+require('lazy').setup(plugins, opts)
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed={'ts_ls'}
+})
 require("lualine").setup()
+
+local lspconfig = require('lspconfig')
+lspconfig.ts_ls.setup({})
 
 local builtin = require("telescope.builtin")
 --vim.keymap.set('n', '<C-f', builtin.find_files, {})
