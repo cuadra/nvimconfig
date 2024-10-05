@@ -15,6 +15,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 local plugins = {
 {
+  'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {},
+  -- Optional dependencies
+  dependencies = {{'echasnovski/mini.icons', opts = {} }}
+},
+{
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig'
@@ -30,6 +38,7 @@ local plugins = {
 }
 }
 local opts = {}
+--require('oil').setup()
 require('lazy').setup(plugins, opts)
 require('mason').setup()
 require('mason-lspconfig').setup({

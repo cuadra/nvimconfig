@@ -55,3 +55,6 @@ keymap("n", "f", ":Telescope find_files<cr>", opts)
 keymap("n", "F", ":Telescope live_grep<cr>", opts)
 
 keymap("n", "g", ":%s/", opts)
+
+-- Oil
+keymap('n', '-', ':edit .<cr>', opts)
